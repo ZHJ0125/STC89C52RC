@@ -1,0 +1,152 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              09/07/2019 20:11:46 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\keil\install\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /**********************实验测试程序************************
+   2          *  平台：BST-V51 + Keil U5 + STC89C52RC
+   3          *  名称：数码管实验
+   4          *  日期：2019-9-7
+   5          *  姓名：ZhangHJ
+   6          *  说明：数码管静态显示
+   7          ***********************************************************/
+   8          #include<reg52.h>
+   9          #include"bstv51.h"
+  10          #define ON 1        //使能
+  11          #define OFF 0       //使不能
+  12          
+  13          sbit DUAN = P2^6;   //数据段选
+  14          sbit WEI = P2^7;    //数码管位选
+  15          int i = 0;
+  16          
+  17          //定义数字段选数组
+  18          uint duan[17] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71,0x00};
+  19          //定义单个数码管的16进制数组
+  20          uint wei[8] = {0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  21          
+  22          
+  23          
+  24          /**********************************************************
+  25          *  函数名称：单数码管显示函数
+  26          *  日期：2019-9-7
+  27          *  姓名：ZhangHJ
+  28          *  说明：能控制8个数码管的某一位输出0-F
+  29                   参数number表示需要显示的数字
+  30                   参数weixuan表示第几个数码管
+  31          ***********************************************************/
+  32          void light_one(int number, int weixuan)
+  33          {
+  34   1        P0 = duan[number];
+  35   1        DUAN = ON;        //段选使能
+  36   1        DUAN = OFF;       //段选使不能
+  37   1        
+  38   1        P0 = wei[weixuan];//位选地址
+  39   1        WEI = ON;         //位选使能
+  40   1        WEI = OFF;        //位选使不能
+  41   1      }
+  42          
+  43          
+  44          
+  45          /**********************************************************
+  46          *  函数名称：多数码管伪动态显示函数
+  47          *  日期：2019-9-7
+  48          *  姓名：ZhangHJ
+  49          *  说明：需要调用light_one()函数,实现8个数码管同时显示的效果
+  50          *        其实就是延时函数缩短了，利用余晖效应造成8个数码管同时亮的效果
+  51          ***********************************************************/
+  52          void light_two()
+  53          {
+  54   1        light_one(1, 0);
+C51 COMPILER V9.57.0.0   MAIN                                                              09/07/2019 20:11:46 PAGE 2   
+
+  55   1        delay_ms(1);
+  56   1        light_one(2, 1);
+  57   1        delay_ms(1);
+  58   1        light_one(3, 2);
+  59   1        delay_ms(1);
+  60   1        light_one(4, 3);
+  61   1        delay_ms(1);
+  62   1        light_one(5, 4);
+  63   1        delay_ms(1);
+  64   1        light_one(6, 5);
+  65   1        delay_ms(1);
+  66   1        light_one(7, 6);
+  67   1        delay_ms(1);
+  68   1        light_one(8, 7);
+  69   1        delay_ms(1);
+  70   1      }
+  71          
+  72          
+  73          
+  74          /**********************************************************
+  75          *  函数名称：多数码循环显示函数
+  76          *  日期：2019-9-7
+  77          *  姓名：ZhangHJ
+  78          *  说明：需要调用light_one()函数,实现多个数码管循环显示的效果
+  79          *        利用延时函数进行循环显示
+  80          ***********************************************************/
+  81          void light_three()
+  82          {
+  83   1        for(i=0; i<8; i++)
+  84   1        {
+  85   2          light_one(i+1, i);
+  86   2          delay_ms(500);
+  87   2        }
+  88   1      }
+  89          
+  90          
+  91          
+  92          /**********************************************************
+  93          *  函数名称：多数码动态显示函数
+  94          *  日期：2019-9-7
+  95          *  姓名：ZhangHJ
+  96          *  说明：需要调用light_one()函数,实现多个数码管动态显示的效果。
+  97          *        可以利用延时函数进行循环显示,如果不用延时函数,需要在每
+  98          *        一位数码管点亮之后，利用位选信号将其关闭.实际体验中,
+  99          *        利用位选的效果不好(发光很弱)
+ 100          ***********************************************************/
+ 101          void light_four()
+ 102          {
+ 103   1        for(i=0; i<8; i++)
+ 104   1        {
+ 105   2          light_one(i+1, i);
+ 106   2          P0 = 0xff;        //位选全部关闭
+ 107   2          WEI = ON;         //位选使能
+ 108   2          WEI = OFF;        //位选使不能
+ 109   2        }
+ 110   1      }
+ 111          
+ 112          
+ 113          void main()
+ 114          {
+ 115   1        
+ 116   1        bstv51_init();    //单片机初始化
+C51 COMPILER V9.57.0.0   MAIN                                                              09/07/2019 20:11:46 PAGE 3   
+
+ 117   1        
+ 118   1        //light_one(5, 6);
+ 119   1        //light_two();
+ 120   1        light_three();
+ 121   1        //light_four();
+ 122   1        //delay_ms(600);
+ 123   1      
+ 124   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    250    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     52    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

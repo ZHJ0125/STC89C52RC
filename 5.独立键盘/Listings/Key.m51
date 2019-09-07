@@ -1,0 +1,143 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/07/2019  21:52:47  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\KEIL\INSTALL\C51\BIN\BL51.EXE .\Objects\bstv51.obj, .\Objects\main.obj TO .\Objects\Key PRINT (.\Listings\Key.m51) RA
+>> MSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\bstv51.obj (BSTV51)
+  .\Objects\main.obj (MAIN)
+  E:\KEIL\INSTALL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\Key (BSTV51)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001FH     UNIT         ?PR?_DELAY_MS?BSTV51
+            CODE    0022H     001FH     UNIT         ?PR?MAIN?MAIN
+            CODE    0041H     000CH     UNIT         ?C_C51STARTUP
+            CODE    004DH     0009H     UNIT         ?PR?BSTV51_INIT?BSTV51
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Key (BSTV51)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?BSTV51_INIT?BSTV51
+  +--> ?PR?_DELAY_MS?BSTV51
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Key (BSTV51)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BSTV51
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/07/2019  21:52:47  PAGE 2
+
+
+  D:00A8H         PUBLIC        IE
+  B:00A0H.3       PUBLIC        FM
+  B:00A0H.5       PUBLIC        EN
+  B:00A0H.6       PUBLIC        CS
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:004DH         PUBLIC        bstv51_init
+  C:0003H         PUBLIC        _delay_ms
+  D:00C8H         PUBLIC        T2CON
+  B:00A0H.7       PUBLIC        RST
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          BSTV51_INIT
+  C:004DH         LINE#         14
+  C:004DH         LINE#         15
+  C:004DH         LINE#         17
+  C:004FH         LINE#         18
+  C:0051H         LINE#         19
+  C:0053H         LINE#         20
+  C:0055H         LINE#         21
+  -------         ENDPROC       BSTV51_INIT
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        mstime
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0003H         LINE#         29
+  C:0003H         LINE#         30
+  C:0003H         LINE#         32
+  C:000BH         LINE#         33
+  C:0021H         LINE#         34
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        BSTV51
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:0090H.4       PUBLIC        L5
+  D:0090H         PUBLIC        P1
+  B:0090H.5       PUBLIC        L6
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0022H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  B:00B0H.4       PUBLIC        K1
+  -------         PROC          MAIN
+  C:0022H         LINE#         54
+  C:0022H         LINE#         55
+  C:0022H         LINE#         56
+  C:0025H         LINE#         58
+  C:0028H         LINE#         59
+  C:0028H         LINE#         60
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/07/2019  21:52:47  PAGE 3
+
+
+  C:0028H         LINE#         61
+  C:002BH         LINE#         62
+  C:002BH         LINE#         63
+  C:0032H         LINE#         64
+  C:0035H         LINE#         65
+  C:0035H         LINE#         68
+  C:0037H         LINE#         69
+  C:0039H         LINE#         70
+  C:0039H         LINE#         71
+  C:003BH         LINE#         73
+  C:003BH         LINE#         74
+  C:003DH         LINE#         75
+  C:003FH         LINE#         76
+  C:003FH         LINE#         79
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=86
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

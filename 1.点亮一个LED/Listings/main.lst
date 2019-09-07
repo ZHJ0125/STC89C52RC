@@ -1,0 +1,44 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              09/07/2019 14:30:43 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\keil\install\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) PRINT(.\Listings\main.lst) TABS(2) OBJECT(
+                    -.\Objects\main.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit led0 = P1^0;     //定义8个特殊位变量，分别表示8个LED
+   4          sbit led1 = P1^1;
+   5          sbit led2 = P1^2;
+   6          sbit led3 = P1^3;
+   7          sbit led4 = P1^4;
+   8          sbit led5 = P1^5;
+   9          sbit led6 = P1^6;
+  10          sbit led7 = P1^7;
+  11          
+  12          int main()
+  13          {
+  14   1          while(1)
+  15   1          {
+  16   2              P1 = 0xe6;  //位操作，同时改变八位输出 1110 0110  LED0、LED3、LED4亮
+  17   2              led6 = 0;   //LED6亮
+  18   2              led7 = 0;   //LED7亮
+  19   2          }
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      9    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\bstv51.obj" 
+TO ".\Objects\shumaguan" 
+PRINT(".\Listings\shumaguan.m51") RAMSIZE(256) 

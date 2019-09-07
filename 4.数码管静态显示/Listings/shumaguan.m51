@@ -1,0 +1,212 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/07/2019  20:11:46  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\KEIL\INSTALL\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\bstv51.obj TO .\Objects\shumaguan PRINT (.\Listings\shuma
+>> guan.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\bstv51.obj (BSTV51)
+  E:\KEIL\INSTALL\C51\LIB\C51S.LIB (?C_STARTUP)
+  E:\KEIL\INSTALL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\shumaguan (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0034H     UNIT         ?DT?MAIN
+            IDATA   003CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0073H     UNIT         ?PR?LIGHT_TWO?MAIN
+            CODE    0102H     003CH     UNIT         ?C_INITSEG
+            CODE    013EH     0030H     UNIT         ?PR?LIGHT_THREE?MAIN
+            CODE    016EH     0030H     UNIT         ?PR?LIGHT_FOUR?MAIN
+            CODE    019EH     0021H     UNIT         ?PR?_LIGHT_ONE?MAIN
+            CODE    01BFH     001FH     UNIT         ?PR?_DELAY_MS?BSTV51
+            CODE    01DEH     0009H     UNIT         ?PR?BSTV51_INIT?BSTV51
+            CODE    01E7H     0006H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\shumaguan (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?BSTV51_INIT?BSTV51
+  +--> ?PR?LIGHT_THREE?MAIN
+
+?PR?LIGHT_THREE?MAIN
+  +--> ?PR?_LIGHT_ONE?MAIN
+  +--> ?PR?_DELAY_MS?BSTV51
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/07/2019  20:11:46  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\shumaguan (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:013EH         PUBLIC        light_three
+  D:00B8H         PUBLIC        IP
+  C:01E7H         PUBLIC        main
+  B:00A0H.6       PUBLIC        DUAN
+  D:0008H         PUBLIC        duan
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:016EH         PUBLIC        light_four
+  C:01A2H         PUBLIC        _light_one
+  D:002AH         PUBLIC        wei
+  C:008FH         PUBLIC        light_two
+  B:00A0H.7       PUBLIC        WEI
+  D:00C8H         PUBLIC        T2CON
+  D:003AH         PUBLIC        i
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          L?0014
+  -------         ENDPROC       L?0014
+  -------         PROC          _LIGHT_ONE
+  D:0006H         SYMBOL        number
+  D:0004H         SYMBOL        weixuan
+  C:01A2H         LINE#         32
+  C:01A2H         LINE#         33
+  C:01A2H         LINE#         34
+  C:01ACH         LINE#         35
+  C:01AEH         LINE#         36
+  C:01B0H         LINE#         38
+  C:01BAH         LINE#         39
+  C:01BCH         LINE#         40
+  C:01BEH         LINE#         41
+  -------         ENDPROC       _LIGHT_ONE
+  -------         PROC          LIGHT_TWO
+  C:008FH         LINE#         52
+  C:008FH         LINE#         53
+  C:008FH         LINE#         54
+  C:0098H         LINE#         55
+  C:009BH         LINE#         56
+  C:00A2H         LINE#         57
+  C:00A6H         LINE#         58
+  C:00ADH         LINE#         59
+  C:00B2H         LINE#         60
+  C:00BDH         LINE#         61
+  C:00C2H         LINE#         62
+  C:00CDH         LINE#         63
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/07/2019  20:11:46  PAGE 3
+
+
+  C:00D2H         LINE#         64
+  C:00DDH         LINE#         65
+  C:00E2H         LINE#         66
+  C:00EDH         LINE#         67
+  C:00F2H         LINE#         68
+  C:00FDH         LINE#         69
+  -------         ENDPROC       LIGHT_TWO
+  -------         PROC          LIGHT_THREE
+  C:013EH         LINE#         81
+  C:013EH         LINE#         82
+  C:013EH         LINE#         83
+  C:0143H         LINE#         84
+  C:0143H         LINE#         85
+  C:0153H         LINE#         86
+  C:015AH         LINE#         87
+  C:016DH         LINE#         88
+  -------         ENDPROC       LIGHT_THREE
+  -------         PROC          LIGHT_FOUR
+  C:016EH         LINE#         101
+  C:016EH         LINE#         102
+  C:016EH         LINE#         103
+  C:0173H         LINE#         104
+  C:0173H         LINE#         105
+  C:0183H         LINE#         106
+  C:0186H         LINE#         107
+  C:0188H         LINE#         108
+  C:018AH         LINE#         109
+  C:019DH         LINE#         110
+  -------         ENDPROC       LIGHT_FOUR
+  -------         PROC          MAIN
+  C:01E7H         LINE#         113
+  C:01E7H         LINE#         114
+  C:01E7H         LINE#         116
+  C:01EAH         LINE#         120
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        BSTV51
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  B:00A0H.3       PUBLIC        FM
+  B:00A0H.5       PUBLIC        EN
+  B:00A0H.6       PUBLIC        CS
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:01DEH         PUBLIC        bstv51_init
+  C:01BFH         PUBLIC        _delay_ms
+  D:00C8H         PUBLIC        T2CON
+  B:00A0H.7       PUBLIC        RST
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          BSTV51_INIT
+  C:01DEH         LINE#         14
+  C:01DEH         LINE#         15
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/07/2019  20:11:46  PAGE 4
+
+
+  C:01DEH         LINE#         17
+  C:01E0H         LINE#         18
+  C:01E2H         LINE#         19
+  C:01E4H         LINE#         20
+  C:01E6H         LINE#         21
+  -------         ENDPROC       BSTV51_INIT
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        mstime
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:01BFH         LINE#         29
+  C:01BFH         LINE#         30
+  C:01BFH         LINE#         32
+  C:01C7H         LINE#         33
+  C:01DDH         LINE#         34
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        BSTV51
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LIGHT_TWO?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LIGHT_FOUR?MAIN
+
+Program Size: data=61.0 xdata=0 code=493
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

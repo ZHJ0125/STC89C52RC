@@ -1,0 +1,60 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              09/07/2019 15:56:25 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\keil\install\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /**********************实验测试程序************************
+   2          *  平台：BST-V51 + Keil U5 + STC89C52RC
+   3          *  名称：蜂鸣器实验
+   4          *  日期：2019-9-7
+   5          *  姓名：ZhangHJ
+   6          ***********************************************************/
+   7          #include<reg52.h>
+   8          #define ON 0
+   9          #define OFF 1
+  10          
+  11          sbit FM = P2^3;
+  12          
+  13          /**********************************************************
+  14          *  函数名称：低精度延时函数
+  15          *  日期：2019-9-7
+  16          *  姓名：ZhangHJ
+  17          *  说明：嵌套循环延时
+  18          ***********************************************************/
+  19          void delay_ms(unsigned int mstime)
+  20          {
+  21   1        int i,j;
+  22   1        for(i=mstime; i>=0; i--)
+  23   1          for(j=112; j>=0; j--);
+  24   1      }
+  25          
+  26          
+  27          int main()
+  28          {
+  29   1        while(1)
+  30   1        {
+  31   2          FM = ON;
+  32   2          delay_ms(200);
+  33   2          FM = OFF;
+  34   2          delay_ms(200);
+  35   2        }
+  36   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     51    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

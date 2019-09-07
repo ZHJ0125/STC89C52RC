@@ -1,0 +1,4 @@
+".\Objects\bstv51.obj",
+".\Objects\main.obj" 
+TO ".\Objects\Key" 
+PRINT(".\Listings\Key.m51") RAMSIZE(256) 

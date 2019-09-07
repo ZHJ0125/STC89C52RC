@@ -1,0 +1,178 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/07/2019  15:30:34  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\KEIL\INSTALL\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\liushui PRINT (.\Listings\liushui.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  E:\KEIL\INSTALL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\liushui (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     003AH     UNIT         ?PR?LIUSHUI_FUN1?MAIN
+            CODE    003DH     0023H     UNIT         ?PR?_DELAY_MS?MAIN
+            CODE    0060H     001FH     UNIT         ?PR?LIUSHUI_FUN2?MAIN
+            CODE    007FH     0015H     UNIT         ?PR?LIUSHUI_FUN3?MAIN
+            CODE    0094H     000CH     UNIT         ?C_C51STARTUP
+            CODE    00A0H     0007H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\liushui (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?LIUSHUI_FUN3?MAIN
+
+?PR?LIUSHUI_FUN3?MAIN
+  +--> ?PR?_DELAY_MS?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\liushui (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/07/2019  15:30:34  PAGE 2
+
+
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:00A0H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0041H         PUBLIC        _delay_ms
+  C:0003H         PUBLIC        liushui_fun1
+  C:0060H         PUBLIC        liushui_fun2
+  C:007FH         PUBLIC        liushui_fun3
+  B:0090H.0       PUBLIC        led0
+  B:0090H.1       PUBLIC        led1
+  D:00C8H         PUBLIC        T2CON
+  B:0090H.2       PUBLIC        led2
+  B:0090H.3       PUBLIC        led3
+  B:0090H.4       PUBLIC        led4
+  B:0090H.5       PUBLIC        led5
+  B:0090H.6       PUBLIC        led6
+  B:0090H.7       PUBLIC        led7
+  D:00D0H         PUBLIC        PSW
+  C:003DH         SYMBOL        L?0027
+  -------         PROC          L?0026
+  -------         ENDPROC       L?0026
+  C:003DH         SYMBOL        L?0027
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        mstime
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0041H         LINE#         30
+  C:0041H         LINE#         31
+  C:0041H         LINE#         33
+  C:0049H         LINE#         34
+  C:005FH         LINE#         35
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          LIUSHUI_FUN1
+  C:0003H         LINE#         45
+  C:0003H         LINE#         46
+  C:0003H         LINE#         47
+  C:0003H         LINE#         48
+  C:0003H         LINE#         49
+  C:0005H         LINE#         50
+  C:0008H         LINE#         51
+  C:000AH         LINE#         53
+  C:000CH         LINE#         54
+  C:000FH         LINE#         55
+  C:0011H         LINE#         57
+  C:0013H         LINE#         58
+  C:0016H         LINE#         59
+  C:0018H         LINE#         61
+  C:001AH         LINE#         62
+  C:001DH         LINE#         63
+  C:001FH         LINE#         65
+  C:0021H         LINE#         66
+  C:0024H         LINE#         67
+  C:0026H         LINE#         69
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/07/2019  15:30:34  PAGE 3
+
+
+  C:0028H         LINE#         70
+  C:002BH         LINE#         71
+  C:002DH         LINE#         73
+  C:002FH         LINE#         74
+  C:0032H         LINE#         75
+  C:0034H         LINE#         77
+  C:0036H         LINE#         78
+  C:0039H         LINE#         79
+  C:003BH         LINE#         80
+  -------         ENDPROC       LIUSHUI_FUN1
+  -------         PROC          LIUSHUI_FUN2
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:0060H         LINE#         91
+  C:0060H         LINE#         92
+  C:0060H         LINE#         93
+  C:0060H         LINE#         94
+  C:0060H         LINE#         95
+  C:0060H         LINE#         96
+  C:0063H         LINE#         97
+  C:0066H         LINE#         98
+  C:0066H         LINE#         99
+  C:0069H         LINE#         100
+  C:006FH         LINE#         101
+  C:0072H         LINE#         102
+  -------         ENDPROC       LIUSHUI_FUN2
+  -------         PROC          LIUSHUI_FUN3
+  C:007FH         LINE#         114
+  C:007FH         LINE#         115
+  C:007FH         LINE#         116
+  C:0082H         LINE#         117
+  C:0082H         LINE#         118
+  C:0082H         LINE#         119
+  C:0085H         LINE#         120
+  C:0092H         LINE#         121
+  -------         ENDPROC       LIUSHUI_FUN3
+  -------         PROC          MAIN
+  C:00A0H         LINE#         124
+  C:00A0H         LINE#         125
+  C:00A0H         LINE#         129
+  C:00A3H         LINE#         130
+  C:00A6H         LINE#         131
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LIUSHUI_FUN1?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LIUSHUI_FUN2?MAIN
+
+Program Size: data=9.0 xdata=0 code=167
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)
