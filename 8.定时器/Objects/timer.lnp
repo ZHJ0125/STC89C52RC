@@ -1,3 +1,4 @@
-".\Objects\main.obj" 
+".\Objects\main.obj",
+".\Objects\bstv51.obj" 
 TO ".\Objects\timer" 
 PRINT(".\Listings\timer.m51") RAMSIZE(256) 

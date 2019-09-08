@@ -1,0 +1,153 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/08/2019  18:08:41  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\KEIL\INSTALL\C51\BIN\BL51.EXE .\Objects\bstv51.obj, .\Objects\main.obj TO .\Objects\uart PRINT (.\Listings\uart.m51) 
+>> RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\bstv51.obj (BSTV51)
+  .\Objects\main.obj (MAIN)
+  E:\KEIL\INSTALL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\uart (BSTV51)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001AH     UNIT         ?PR?UART_TEST?MAIN
+                    001DH     0006H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     0016H     UNIT         ?PR?UARTCONFIG?MAIN
+            CODE    003CH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0048H     0009H     UNIT         ?PR?BSTV51_INIT?BSTV51
+            CODE    0051H     0008H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\uart (BSTV51)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?BSTV51_INIT?BSTV51
+  +--> ?PR?UARTCONFIG?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\uart (BSTV51)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BSTV51
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/08/2019  18:08:41  PAGE 2
+
+
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  B:00A0H.3       PUBLIC        FM
+  B:00A0H.5       PUBLIC        EN
+  B:00A0H.6       PUBLIC        CS
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0048H         PUBLIC        bstv51_init
+  D:00C8H         PUBLIC        T2CON
+  B:00A0H.7       PUBLIC        RST
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          BSTV51_INIT
+  C:0048H         LINE#         14
+  C:0048H         LINE#         15
+  C:0048H         LINE#         17
+  C:004AH         LINE#         18
+  C:004CH         LINE#         19
+  C:004EH         LINE#         20
+  C:0050H         LINE#         21
+  -------         ENDPROC       BSTV51_INIT
+  -------         ENDMOD        BSTV51
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:0051H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  C:0003H         PUBLIC        uart_test
+  D:00C8H         PUBLIC        T2CON
+  C:0026H         PUBLIC        UartConfig
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          UARTCONFIG
+  C:0026H         LINE#         24
+  C:0026H         LINE#         25
+  C:0026H         LINE#         26
+  C:0029H         LINE#         27
+  C:002CH         LINE#         28
+  C:002FH         LINE#         29
+  C:0032H         LINE#         30
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/08/2019  18:08:41  PAGE 3
+
+
+  C:0035H         LINE#         31
+  C:0037H         LINE#         32
+  C:0039H         LINE#         33
+  C:003BH         LINE#         34
+  -------         ENDPROC       UARTCONFIG
+  -------         PROC          MAIN
+  C:0051H         LINE#         36
+  C:0051H         LINE#         37
+  C:0051H         LINE#         38
+  C:0054H         LINE#         39
+  C:0057H         LINE#         40
+  -------         ENDPROC       MAIN
+  -------         PROC          UART_TEST
+  -------         DO            
+  D:0007H         SYMBOL        uartdata
+  -------         ENDDO         
+  C:0003H         LINE#         43
+  C:000AH         LINE#         46
+  C:000CH         LINE#         47
+  C:000FH         LINE#         48
+  C:0011H         LINE#         49
+  C:0013H         LINE#         50
+  C:0016H         LINE#         51
+  C:0018H         LINE#         52
+  -------         ENDPROC       UART_TEST
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=83
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
