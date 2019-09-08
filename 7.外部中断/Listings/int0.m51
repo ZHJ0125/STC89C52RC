@@ -1,0 +1,87 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/08/2019  11:23:12  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\KEIL\INSTALL\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\int0 PRINT (.\Listings\int0.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  E:\KEIL\INSTALL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\int0 (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     000EH     UNIT         ?PR?MAIN?MAIN
+            CODE    0014H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0020H     0004H     UNIT         ?PR?INT_KEY?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\int0 (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\int0 (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0006H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0020H         PUBLIC        INT_KEY
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/08/2019  11:23:12  PAGE 2
+
+
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0006H         LINE#         22
+  C:0006H         LINE#         23
+  C:0006H         LINE#         24
+  C:0008H         LINE#         25
+  C:000AH         LINE#         27
+  C:000CH         LINE#         28
+  C:000FH         LINE#         29
+  C:0012H         LINE#         30
+  -------         ENDPROC       MAIN
+  -------         PROC          INT_KEY
+  C:0020H         LINE#         34
+  C:0020H         LINE#         36
+  C:0023H         LINE#         37
+  -------         ENDPROC       INT_KEY
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=36
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

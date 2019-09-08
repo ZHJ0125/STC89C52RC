@@ -1,0 +1,236 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              09/08/2019 10:11:22 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\keil\install\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /**********************实验测试程序************************
+   2          *  平台：BST-V51 + Keil U5 + STC89C52RC
+   3          *  名称：矩阵按键实验
+   4          *  日期：2019-9-8
+   5          *  姓名：ZhangHJ
+   6          *  说明：矩阵按键控制数码管
+   7          *        效果是实现4X4矩阵的数码管显示
+   8          ***********************************************************/
+   9          #include<reg52.h>
+  10          #include"bstv51.h"
+  11          
+  12          unsigned char led[]={  //按键字符数组
+  13                          0x3F,  //"0"
+  14                          0x06,  //"1"
+  15                          0x5B,  //"2"
+  16                          0x4F,  //"3"
+  17                          0x66,  //"4"
+  18                          0x6D,  //"5"
+  19                          0x7D,  //"6"
+  20                          0x07,  //"7"
+  21                          0x7F,  //"8"
+  22                          0x6F,  //"9"
+  23                          0x77,  //"A"
+  24                          0x7C,  //"B"
+  25                          0x39,  //"C"
+  26                          0x5E,  //"D"
+  27                          0x79,  //"E"
+  28                          0x71,  //"F"
+  29                          0x76,  //"H"
+  30                          0x38,  //"L"
+  31                          0x37,  //"n"
+  32                          0x3E,  //"u"
+  33                          0x73,  //"P"
+  34                          0x5C,  //"o"
+  35                          0x40,  //"-"
+  36                          0x00,  //熄灭
+  37                          };
+  38          
+  39                          
+  40          /**********************************************************
+  41          *  函数名称：数码管显示函数
+  42          *  日期：2019-9-8
+  43          *  姓名：ZhangHJ
+  44          *  说明：参数num表示需要显示的字符
+  45          *        只进行了段选控制,没有进行位选控制
+  46          ***********************************************************/
+  47          void display(int num)
+  48          { 
+  49   1        P0 = led[num];
+  50   1        DU = 1;
+  51   1        DU = 0;
+  52   1        FM = 0;
+  53   1        delay_ms(60);
+  54   1        FM = 1;
+C51 COMPILER V9.57.0.0   MAIN                                                              09/08/2019 10:11:22 PAGE 2   
+
+  55   1      }
+  56          
+  57          
+  58          
+  59          /**********************************************************
+  60          *  函数名称：矩阵键盘扫描函数
+  61          *  日期：2019-9-8
+  62          *  姓名：ZhangHJ
+  63          *  说明：函数分为四个部分,分别对应四行键盘的扫描
+  64          *        
+  65          ***********************************************************/
+  66          void keyscan4x4()
+  67          {
+  68   1        uint temp,key;
+  69   1        //////////////第一行扫描////////////////////
+  70   1        P3 = 0xfe;                //1111 1110 第一行扫描写高电平
+  71   1        temp = P3;                //设置临时变量存储P3寄存器数据
+  72   1        temp = temp&0xf0;         //1111 1110 & 1111 0000 相当于高四位不变,低四位变0(屏蔽低四位数据)
+  73   1        if(temp != 0xf0)          //数据发生改变,说明键盘可能被按下
+  74   1        {
+  75   2          delay_ms(10);           //延时消抖
+  76   2          temp = P3;              //重新读入P3数据
+  77   2          temp = temp&0xf0;
+  78   2          if(temp != 0xf0)
+  79   2          {
+  80   3            temp = P3;            //重新读入数据,考虑低四位数据
+  81   3            switch(temp){
+  82   4              case 0xee:
+  83   4                key = 0; break;   //1110 1110
+  84   4              case 0xde:
+  85   4                key = 1; break;   //1101 1110
+  86   4              case 0xbe:
+  87   4                key = 2; break;   //1011 1110
+  88   4              case 0x7e:
+  89   4                key = 3; break;   //0111 1110
+  90   4            }
+  91   3            while(temp != 0xf0)   //键盘被按下时,卡死在这个循环里,直到松开键盘,才执行接下来的程序
+  92   3            {
+  93   4              temp = P3;
+  94   4              temp = temp&0xf0;
+  95   4            }
+  96   3            display(key);         //显示读到的数据
+  97   3          }
+  98   2        }
+  99   1        
+ 100   1        //////////////第二行扫描////////////////////
+ 101   1        P3 = 0xfd;    //1111 1101
+ 102   1        temp = P3;
+ 103   1        temp = temp&0xf0;   //1111 1101 & 1111 0000 相当于高四位不变,低四位变0
+ 104   1        if(temp != 0xf0)
+ 105   1        {
+ 106   2          delay_ms(10);
+ 107   2          temp = P3;
+ 108   2          temp = temp&0xf0;
+ 109   2          if(temp != 0xf0)
+ 110   2          {
+ 111   3            temp = P3;
+ 112   3            switch(temp){
+ 113   4              case 0xed:
+ 114   4                key = 4; break;   //1110 1101
+ 115   4              case 0xdd:
+ 116   4                key = 5; break;   //1101 1101
+C51 COMPILER V9.57.0.0   MAIN                                                              09/08/2019 10:11:22 PAGE 3   
+
+ 117   4              case 0xbd:
+ 118   4                key = 6; break;   //1011 1101
+ 119   4              case 0x7d:
+ 120   4                key = 7; break;   //0111 1101
+ 121   4            }
+ 122   3            while(temp != 0xf0)
+ 123   3            {
+ 124   4              temp = P3;
+ 125   4              temp = temp&0xf0;
+ 126   4            }
+ 127   3            display(key);
+ 128   3          }
+ 129   2        }
+ 130   1        
+ 131   1        //////////////第三行扫描////////////////////
+ 132   1        P3 = 0xfb;    //1111 1011
+ 133   1        temp = P3;
+ 134   1        temp = temp&0xf0;   //1111 1011 & 1111 0000 相当于高四位不变,低四位变0
+ 135   1        if(temp != 0xf0)
+ 136   1        {
+ 137   2          delay_ms(10);
+ 138   2          temp = P3;
+ 139   2          temp = temp&0xf0;
+ 140   2          if(temp != 0xf0)
+ 141   2          {
+ 142   3            temp = P3;
+ 143   3            switch(temp){
+ 144   4              case 0xeb:
+ 145   4                key = 8; break;   //1110 1011
+ 146   4              case 0xdb:
+ 147   4                key = 9; break;   //1101 1011
+ 148   4              case 0xbb:
+ 149   4                key = 10; break;    //1011 1011
+ 150   4              case 0x7b:
+ 151   4                key = 11; break;    //0111 1011
+ 152   4            }
+ 153   3            while(temp != 0xf0)
+ 154   3            {
+ 155   4              temp = P3;
+ 156   4              temp = temp&0xf0;
+ 157   4            }
+ 158   3            display(key);
+ 159   3          }
+ 160   2        }
+ 161   1        
+ 162   1        //////////////第四行扫描////////////////////
+ 163   1        P3 = 0xf7;    //1111 0111
+ 164   1        temp = P3;
+ 165   1        temp = temp&0xf0;   //1111 0111 & 1111 0000 相当于高四位不变,低四位变0
+ 166   1        if(temp != 0xf0)
+ 167   1        {
+ 168   2          delay_ms(10);
+ 169   2          temp = P3;
+ 170   2          temp = temp&0xf0;
+ 171   2          if(temp != 0xf0)
+ 172   2          {
+ 173   3            temp = P3;
+ 174   3            switch(temp){
+ 175   4              case 0xe7:
+ 176   4                key = 12; break;    //1110 0111
+ 177   4              case 0xd7:
+ 178   4                key = 13; break;    //1101 0111
+C51 COMPILER V9.57.0.0   MAIN                                                              09/08/2019 10:11:22 PAGE 4   
+
+ 179   4              case 0xb7:
+ 180   4                key = 14; break;    //1011 0111
+ 181   4              case 0x77:
+ 182   4                key = 15; break;    //0111 0111
+ 183   4            }
+ 184   3            while(temp != 0xf0)
+ 185   3            {
+ 186   4              temp = P3;
+ 187   4              temp = temp&0xf0;
+ 188   4            }
+ 189   3            display(key);
+ 190   3          }
+ 191   2        }
+ 192   1      }
+ 193          
+ 194          
+ 195          void main()
+ 196          {
+ 197   1        bstv51_init();  //板子初始化
+ 198   1        P0 = 0x00;      //位选8位,相当于四位全亮
+ 199   1        WE = 1;
+ 200   1        WE = 0;
+ 201   1        
+ 202   1        while(1)
+ 203   1        {
+ 204   2          keyscan4x4(); //进行按键扫描
+ 205   2        }
+ 206   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    590    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     24       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
